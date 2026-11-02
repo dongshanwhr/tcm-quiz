@@ -71,7 +71,7 @@ button{padding:11px 14px;border-radius:10px;border:none;font-size:15px;cursor:po
   <button class="btn-gray" id="resetBtn">重置本套</button>
 </div>
 <div id="filterTip"></div>
-<div class="question-card" id="qWrap" style="display:none">
+<div class="question-card" id="qWrap">
   <div class="info-line"><span id="subjectTag"></span>｜题号 <span id="qIndex"></span></div>
   <div class="q-title" id="qText"></div>
   <div id="optWrap"></div>
@@ -364,7 +364,7 @@ function updateStat(){
 function makePool(){
   renderPool = questionList.map((v,i)=>({...v,idx:i}));
   if(filterSubject!=="all") renderPool = renderPool.filter(x=>x.sub===filterSubject);
-  // 修复错题筛选：只取有记录并且rate<3（模糊/不会），未作答不进错题池
+  // 修复错题筛选：只取有记录并且rate<3（模糊/不会）
   if(wrongOnly) renderPool = renderPool.filter(x=>{
     const r = memory[x.idx];
     return r && r.rate < 3;
@@ -416,7 +416,7 @@ tabs.forEach(t=>{
     tabs.forEach(x=>x.classList.remove("active"));
     t.classList.add("active");
     filterSubject = t.dataset.subject;
-    wrongOnly = false; // 切科目自动切回正常刷题
+    wrongOnly = false;
     currentIdx = 0;
     makePool();
     render();
@@ -436,9 +436,9 @@ rateBtns.forEach(b=>{
   }
 })
 
-// 按钮事件
+// 按钮事件：支持反复点击切换【只看错题 / 退出错题】
 wrongBtn.onclick = ()=>{
-  wrongOnly = true;
+  wrongOnly = !wrongOnly;
   currentIdx = 0;
   makePool();
   render();
@@ -462,9 +462,10 @@ showAnsBtn.onclick = ()=>{
   ansWrap.classList.toggle("show");
 }
 
-// 初始化
+// 初始化：页面打开直接渲染题目（重点修复）
 updateStat();
 makePool();
+render();
 </script>
 </body>
 </html>
