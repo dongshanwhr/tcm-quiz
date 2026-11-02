@@ -45,6 +45,7 @@ button{padding:11px 14px;border-radius:10px;border:none;font-size:15px;cursor:po
 .nav-row{display:flex;gap:10px;margin-top:22px}
 .rate-row{display:flex;gap:8px;margin-top:14px}
 .rate-btn{flex:1}
+.rate-btn.active{outline:2px solid var(--primary)}
 .info-line{color:var(--muted);font-size:14px;margin-bottom:8px}
 #filterTip{color:var(--muted);margin:8px 0}
 </style>
@@ -308,11 +309,10 @@ const questionList = [
 {sub:"wenbing",q:"秋燥，初起，右脉数大，干咳无痰，气逆而喘，咽干鼻燥，心烦口渴，方？",opt:["桑杏汤","杏苏散","清燥救肺汤","沙参麦冬汤"],ans:2,exp:"秋燥，燥热在肺，清燥救肺汤；桑杏是燥邪初起轻证。"}
 ];
 
-// 记忆存储
+// 记忆存储：每道题独立状态 {choose, rate, showAns}
 let memory = JSON.parse(localStorage.getItem("tcmQuizMem")) || {};
 let filterSubject = "all";
 let wrongOnly = false;
-let showAns = false;
 let currentIdx = 0;
 let renderPool = [];
 
@@ -349,7 +349,7 @@ function updateStat(){
   let done=0,master=0;
   questionList.forEach((item,i)=>{
     const rec = memory[i];
-    if(rec){
+    if(rec && rec.choose!==null){
       done++;
       if(rec.rate===3) master++;
     }
@@ -364,14 +364,13 @@ function updateStat(){
 function makePool(){
   renderPool = questionList.map((v,i)=>({...v,idx:i}));
   if(filterSubject!=="all") renderPool = renderPool.filter(x=>x.sub===filterSubject);
-  // 修复错题筛选：只取有记录并且rate<3（模糊/不会）
   if(wrongOnly) renderPool = renderPool.filter(x=>{
     const r = memory[x.idx];
-    return r && r.rate < 3;
+    return r && r.choose!==null && r.rate < 3;
   })
 }
 
-// 渲染当前题目
+// 渲染当前题目：读取该题自己的全部状态
 function render(){
   if(renderPool.length===0){
     qWrap.style.display="none";
@@ -385,11 +384,17 @@ function render(){
   qIndexEl.innerText = `${currentIdx+1}/${renderPool.length}`;
   qText.innerText = cur.q;
   optWrap.innerHTML = "";
-  ansWrap.classList.remove("show");
-  showAns = false;
   ansText.innerText = cur.exp;
+
+  // 不存在记录就初始化一条
+  if(!memory[cur.idx]){
+    memory[cur.idx] = {choose:null, rate:2, showAns:false};
+  }
   const rec = memory[cur.idx];
-  let answered = !!rec;
+  let answered = rec.choose !== null;
+
+  // 解析显示状态跟随本题
+  ansWrap.classList.toggle("show", rec.showAns);
 
   cur.opt.forEach((txt,oi)=>{
     const div = document.createElement("div");
@@ -402,11 +407,20 @@ function render(){
     }
     div.onclick = ()=>{
       if(answered) return;
-      memory[cur.idx] = {choose:oi,rate:2};
+      rec.choose = oi;
+      memory[cur.idx] = rec;
       updateStat();
       render();
     }
     optWrap.appendChild(div);
+  })
+
+  // 标记按钮高亮
+  rateBtns.forEach(b=>{
+    b.classList.remove("active");
+    if(Number(b.dataset.rate) === rec.rate){
+      b.classList.add("active");
+    }
   })
 }
 
@@ -429,40 +443,49 @@ rateBtns.forEach(b=>{
     if(renderPool.length===0) return;
     const cur = renderPool[currentIdx];
     const r = Number(b.dataset.rate);
-    if(!memory[cur.idx]) memory[cur.idx] = {choose:-1};
+    if(!memory[cur.idx]) memory[cur.idx] = {choose:null, rate:2, showAns:false};
     memory[cur.idx].rate = r;
     updateStat();
-    alert("已标记记忆等级！");
+    render();
   }
 })
 
-// 按钮事件：支持反复点击切换【只看错题 / 退出错题】
+// 查看解析：只修改这一题自己的showAns
+showAnsBtn.onclick = ()=>{
+  const cur = renderPool[currentIdx];
+  memory[cur.idx].showAns = !memory[cur.idx].showAns;
+  updateStat();
+  render();
+}
+
+// 只看错题
 wrongBtn.onclick = ()=>{
   wrongOnly = !wrongOnly;
   currentIdx = 0;
   makePool();
   render();
 }
+
+// 重置本套（当前筛选池里面所有题目清空状态）
 resetBtn.onclick = ()=>{
-  if(confirm("确定清空全部记忆记录？不可恢复！")){
-    memory = {};
-    localStorage.removeItem("tcmQuizMem");
+  if(confirm("确定清空当前这一套筛选内所有题目的作答记录？不可恢复！")){
+    renderPool.forEach(x=>{
+      memory[x.idx] = {choose:null, rate:2, showAns:false};
+    })
     updateStat();
     makePool();
     render();
   }
 }
+
 prevBtn.onclick = ()=>{
   if(currentIdx>0){currentIdx--;render();}
 }
 nextBtn.onclick = ()=>{
   if(currentIdx < renderPool.length-1){currentIdx++;render();}
 }
-showAnsBtn.onclick = ()=>{
-  ansWrap.classList.toggle("show");
-}
 
-// 初始化：页面打开直接渲染题目（重点修复）
+// 初始化
 updateStat();
 makePool();
 render();
