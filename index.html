@@ -67,7 +67,6 @@ button{padding:11px 14px;border-radius:10px;border:none;font-size:15px;cursor:po
   <div class="tab" data-subject="wenbing">温病</div>
 </div>
 <div class="ctrl-bar">
-  <button class="btn-main" id="startBtn">开始刷题</button>
   <button class="btn-alt" id="wrongBtn">只看错题</button>
   <button class="btn-gray" id="resetBtn">重置本套</button>
 </div>
@@ -284,7 +283,7 @@ const questionList = [
 {sub:"wenbing",q:"烂喉痧，喉烂，丹痧密布，壮热口渴，舌红绛，脉细数，方？",opt:["凉营清气汤","余氏清心凉膈散","锡类散","珠黄散"],ans:0,exp:"凉营清气，烂喉痧气营两燔。"},
 {sub:"wenbing",q:"大头瘟，头面红肿焮痛，目不能开，咽喉不利，舌燥口渴，方？",opt:["普济消毒饮","银翘散","黄连解毒汤","凉膈散"],ans:0,exp:"普济消毒饮，风热疫毒上攻大头瘟。"},
 {sub:"wenbing",q:"温疫，湿热疫毒，憎寒壮热，舌红苔白厚如积粉，方？",opt:["达原饮","白虎汤","黄连解毒汤","清瘟败毒饮"],ans:0,exp:"达原饮，邪伏膜原，苔白如积粉。"},
-{sub:"wenbing",q:"温疫热毒，气血两燔，大热渴饮，头痛如劈，干呕狂躁，谵语神昏，方？",opt:["清瘟败毒饮","化斑汤","白虎汤","犀角地黄汤"],ans:0,exp:"清瘟败毒饮，气血两燔重证，瘟疫。"},
+{sub:"wenbing",q:"温疫热毒，气血两燔，大热渴饮，头痛如劈，干呕狂躁，谵语神昏，方？",opt:["清瘟败毒饮","化斑汤","白虎汤","犀角地黄汤"],ans:0,exp:"清瘟败毒，气血两燔重证，瘟疫。"},
 {sub:"wenbing",q:"薛生白《湿热病篇》，湿热证，始恶寒，后但热不寒，汗出胸痞，舌白，口渴不引饮，病机是？",opt:["湿热阻遏卫气","湿热入营","湿热入血","阳明热盛"],ans:0,exp:"湿热初起，卫气同病，湿重于热。"},
 {sub:"wenbing",q:"薛生白：湿热证，寒热如疟，湿热阻遏膜原，宜？",opt:["柴胡厚朴汤","达原饮","三仁汤","黄芩滑石汤"],ans:0,exp:"湿热阻膜原，柴胡厚朴汤，区别于达原饮之疫毒。"},
 {sub:"wenbing",q:"薛生白：湿热证，数日后，汗出热不除，或痉，忽头痛不止者，营液大亏，风火上升，宜？",opt:["羚羊角、蔓荆、钩藤、生地等","羚角钩藤汤","大定风珠","三甲复脉"],ans:0,exp:"湿热伤阴，风阳上冒头痛痉。"},
@@ -329,7 +328,6 @@ const qText = document.getElementById("qText");
 const optWrap = document.getElementById("optWrap");
 const ansWrap = document.getElementById("ansWrap");
 const ansText = document.getElementById("ansText");
-const startBtn = document.getElementById("startBtn");
 const wrongBtn = document.getElementById("wrongBtn");
 const resetBtn = document.getElementById("resetBtn");
 const prevBtn = document.getElementById("prevBtn");
@@ -366,9 +364,10 @@ function updateStat(){
 function makePool(){
   renderPool = questionList.map((v,i)=>({...v,idx:i}));
   if(filterSubject!=="all") renderPool = renderPool.filter(x=>x.sub===filterSubject);
+  // 修复错题筛选：只取有记录并且rate<3（模糊/不会），未作答不进错题池
   if(wrongOnly) renderPool = renderPool.filter(x=>{
     const r = memory[x.idx];
-    return !r || r.rate < 3;
+    return r && r.rate < 3;
   })
 }
 
@@ -417,6 +416,7 @@ tabs.forEach(t=>{
     tabs.forEach(x=>x.classList.remove("active"));
     t.classList.add("active");
     filterSubject = t.dataset.subject;
+    wrongOnly = false; // 切科目自动切回正常刷题
     currentIdx = 0;
     makePool();
     render();
@@ -437,12 +437,6 @@ rateBtns.forEach(b=>{
 })
 
 // 按钮事件
-startBtn.onclick = ()=>{
-  wrongOnly = false;
-  currentIdx = 0;
-  makePool();
-  render();
-}
 wrongBtn.onclick = ()=>{
   wrongOnly = true;
   currentIdx = 0;
