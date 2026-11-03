@@ -6,15 +6,15 @@
 <title>中医经典等级考试｜经典复习站</title>
 <style>
 :root{
---bg:#121416;
---card:#1c2024;
---text:#e6e6e6;
---muted:#99a2aa;
---primary:#c84b31;
---accent:#2b6777;
---border:#333a42;
---success:#38a169;
---danger:#e53e3e;
+  --bg:#121416;
+  --card:#1c2024;
+  --text:#e6e6e6;
+  --muted:#99a2aa;
+  --primary:#c84b31;
+  --accent:#2b6777;
+  --border:#333a42;
+  --success:#38a169;
+  --danger:#e53e3e;
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,serif}
 body{background:var(--bg);color:var(--text);padding:16px;max-width:720px;margin:0 auto;line-height:1.65}
@@ -52,43 +52,43 @@ button{padding:11px 14px;border-radius:10px;border:none;font-size:15px;cursor:po
 </head>
 <body>
 <header>
-<h1>中医经典等级考试复习</h1>
-<div class="desc">内经 · 伤寒 · 金匮 · 温病｜间隔记忆刷题</div>
+  <h1>中医经典等级考试复习</h1>
+  <div class="desc">内经 · 伤寒 · 金匮 · 温病｜间隔记忆刷题</div>
 </header>
 <div class="panel stats">
-<div class="stat-item"><h3 id="total">0</h3><p>总题库</p></div>
-<div class="stat-item"><h3 id="done">0</h3><p>已作答</p></div>
-<div class="stat-item"><h3 id="master">0</h3><p>已掌握</p></div>
+  <div class="stat-item"><h3 id="total">0</h3><p>总题库</p></div>
+  <div class="stat-item"><h3 id="done">0</h3><p>已作答</p></div>
+  <div class="stat-item"><h3 id="master">0</h3><p>已掌握</p></div>
 </div>
 <div class="tab-bar" id="tabWrap">
-<div class="tab active" data-subject="all">全部</div>
-<div class="tab" data-subject="neijing">素问/灵枢</div>
-<div class="tab" data-subject="shanghan">伤寒论</div>
-<div class="tab" data-subject="jinkui">金匮要略</div>
-<div class="tab" data-subject="wenbing">温病</div>
+  <div class="tab active" data-subject="all">全部</div>
+  <div class="tab" data-subject="neijing">素问/灵枢</div>
+  <div class="tab" data-subject="shanghan">伤寒论</div>
+  <div class="tab" data-subject="jinkui">金匮要略</div>
+  <div class="tab" data-subject="wenbing">温病</div>
 </div>
 <div class="ctrl-bar">
-<button class="btn-alt" id="wrongBtn">只看错题</button>
-<button class="btn-gray" id="resetBtn">重置本套</button>
+  <button class="btn-alt" id="wrongBtn">只看错题</button>
+  <button class="btn-gray" id="resetBtn">重置本套</button>
 </div>
 <div id="filterTip"></div>
 <div class="question-card" id="qWrap">
-<div class="info-line"><span id="subjectTag"></span>｜题号 <span id="qIndex"></span></div>
-<div class="q-title" id="qText"></div>
-<div id="optWrap"></div>
-<div class="ans-box" id="ansWrap">
-<strong>解析：</strong><div id="ansText"></div>
-</div>
-<div class="nav-row">
-<button class="btn-gray" id="prevBtn">上一题</button>
-<button class="btn-gray" id="nextBtn">下一题</button>
-<button class="btn-alt" id="showAnsBtn">查看解析</button>
-</div>
-<div class="rate-row">
-<button class="btn-gray rate-btn" data-rate="3">✅ 掌握</button>
-<button class="btn-gray rate-btn" data-rate="2">⚠️ 模糊</button>
-<button class="btn-gray rate-btn" data-rate="1">❌ 不会</button>
-</div>
+  <div class="info-line"><span id="subjectTag"></span>｜题号 <span id="qIndex"></span></div>
+  <div class="q-title" id="qText"></div>
+  <div id="optWrap"></div>
+  <div class="ans-box" id="ansWrap">
+    <strong>解析：</strong><div id="ansText"></div>
+  </div>
+  <div class="nav-row">
+    <button class="btn-gray" id="prevBtn">上一题</button>
+    <button class="btn-gray" id="nextBtn">下一题</button>
+    <button class="btn-alt" id="showAnsBtn">查看解析</button>
+  </div>
+  <div class="rate-row">
+    <button class="btn-gray rate-btn" data-rate="3">✅ 掌握</button>
+    <button class="btn-gray rate-btn" data-rate="2">⚠️ 模糊</button>
+    <button class="btn-gray rate-btn" data-rate="1">❌ 不会</button>
+  </div>
 </div>
 
 <script>
@@ -96,7 +96,7 @@ const questionList = [
 // ========== 内经 50题 ==========
 {sub:"neijing",q:"《素问·上古天真论》女子二七，生理变化为？",opt:["任脉通，太冲脉盛，月事以时下","肾气盛，齿更发长","任脉虚，太冲脉衰少","筋骨坚，发长极，身体盛壮"],ans:0,exp:"原文：女子二七而天癸至，任脉通，太冲脉盛，月事以时下，故有子。"},
 {sub:"neijing",q:"《素问·上古天真论》男子二八，生理变化为？",opt:["肾气盛，齿更发长","天癸至，精气溢泻","筋骨隆盛，肌肉满壮","肾气衰，发堕齿槁"],ans:1,exp:"男子二八，肾气盛，天癸至，精气溢泻，阴阳和，故能有子。"},
-{sub:"neijing",q:"《素问·阴阳应象大论》：阴在内，；阳在外，。",opt:["阳之守也，阴之使也","阳之使也，阴之守也","阴之守也，阳之使也","阴之使也，阳之守也"],ans:0,exp:"阴在内，阳之守也；阳在外，阴之使也，是阴阳互根核心句。"},
+{sub:"neijing",q:"《素问·阴阳应象大论》：阴在内，____；阳在外，____。",opt:["阳之守也，阴之使也","阳之使也，阴之守也","阴之守也，阳之使也","阴之使也，阳之守也"],ans:0,exp:"阴在内，阳之守也；阳在外，阴之使也，是阴阳互根核心句。"},
 {sub:"neijing",q:"《素问·阴阳应象大论》善诊者，察色按脉，先别？",opt:["表里","虚实","阴阳","寒热"],ans:2,exp:"善诊者，察色按脉，先别阴阳。"},
 {sub:"neijing",q:"《素问·灵兰秘典论》被称作“君主之官”的是？",opt:["肝","心","脾","肺"],ans:1,exp:"心者，君主之官也，神明出焉。"},
 {sub:"neijing",q:"《素问·灵兰秘典论》“相傅之官”是？",opt:["肺","肝","胆","肾"],ans:0,exp:"肺者，相傅之官，治节出焉。"},
@@ -127,11 +127,11 @@ const questionList = [
 {sub:"neijing",q:"《灵枢·水胀》石瘕生于？",opt:["胞中","肠间","筋脉","皮部"],ans:0,exp:"石瘕生于胞中，寒气客于子门。"},
 {sub:"neijing",q:"《灵枢·水胀》肠覃病位在？",opt:["胞中","肠外","肝经","冲脉"],ans:1,exp:"肠覃乃寒气客于肠外，与卫气相搏。"},
 {sub:"neijing",q:"《素问·脉要精微论》夫脉者，血之____也。",opt:["府","隧","道","舍"],ans:0,exp:"夫脉者，血之府也。"},
-{sub:"neijing",q:"《素问·脉要精微论》中，头者，之府。",opt:["髓","精明","筋","血"],ans:1,exp:"头者，精明之府。"},
-{sub:"neijing",q:"《素问·脉要精微论》背者，之府。",opt:["肾","胸","心","肺"],ans:1,exp:"背者，胸中之府。"},
-{sub:"neijing",q:"《素问·脉要精微论》腰者，之府。",opt:["肝","脾","肾","命门"],ans:2,exp:"腰者，肾之府。"},
-{sub:"neijing",q:"《素问·脉要精微论》膝者，之府。",opt:["筋","骨","血","髓"],ans:0,exp:"膝者，筋之府。"},
-{sub:"neijing",q:"《素问·脉要精微论》骨者，之府。",opt:["精","髓","血","气"],ans:1,exp:"骨者，髓之府。"},
+{sub:"neijing",q:"《素问·脉要精微论》中，头者，____之府。",opt:["髓","精明","筋","血"],ans:1,exp:"头者，精明之府。"},
+{sub:"neijing",q:"《素问·脉要精微论》背者，____之府。",opt:["肾","胸","心","肺"],ans:1,exp:"背者，胸中之府。"},
+{sub:"neijing",q:"《素问·脉要精微论》腰者，____之府。",opt:["肝","脾","肾","命门"],ans:2,exp:"腰者，肾之府。"},
+{sub:"neijing",q:"《素问·脉要精微论》膝者，____之府。",opt:["筋","骨","血","髓"],ans:0,exp:"膝者，筋之府。"},
+{sub:"neijing",q:"《素问·脉要精微论》骨者，____之府。",opt:["精","髓","血","气"],ans:1,exp:"骨者，髓之府。"},
 {sub:"neijing",q:"《素问·汤液醪醴论》水肿治疗，开鬼门是指？",opt:["利小便","发汗","逐水","放血"],ans:1,exp:"开鬼门=发汗；洁净府=利小便。"},
 {sub:"neijing",q:"《素问·汤液醪醴论》洁净府指？",opt:["发汗","利小便","涌吐","攻下"],ans:1,exp:"洁净府，即通利小便。"},
 {sub:"neijing",q:"《素问·至真要大论》：诸风掉眩，皆属于？",opt:["心","肝","脾","肺"],ans:1,exp:"诸风掉眩，皆属于肝。"},
@@ -144,56 +144,6 @@ const questionList = [
 {sub:"neijing",q:"《素问·至真要大论》诸痿喘呕，皆属于？",opt:["上","下","肺","胃"],ans:0,exp:"诸痿喘呕，皆属于上。"},
 {sub:"neijing",q:"《素问·至真要大论》诸禁鼓栗，如丧神守，皆属于？",opt:["寒","火","风","湿"],ans:1,exp:"诸禁鼓栗，如丧神守，皆属于火。"},
 {sub:"neijing",q:"《素问·至真要大论》诸痉项强，皆属于？",opt:["湿","风","寒","燥"],ans:0,exp:"诸痉项强，皆属于湿。"},
-{sub:"neijing",q:"《素问·四气调神大论》春三月，此谓？",opt:["发陈","蕃秀","容平","闭藏"],ans:0,exp:"春三月，此谓发陈；夏蕃秀；秋容平；冬闭藏。"},
-{sub:"neijing",q:"《素问·四气调神大论》夏三月，此谓？",opt:["发陈","蕃秀","容平","闭藏"],ans:1,exp:"夏三月，此谓蕃秀。"},
-{sub:"neijing",q:"《素问·四气调神大论》秋三月，此谓？",opt:["发陈","蕃秀","容平","闭藏"],ans:2,exp:"秋三月，此谓容平。"},
-{sub:"neijing",q:"《素问·四气调神大论》冬三月，此谓？",opt:["发陈","蕃秀","容平","闭藏"],ans:3,exp:"冬三月，此谓闭藏。"},
-{sub:"neijing",q:"《素问·四气调神大论》圣人不治已病治？",opt:["已乱","未病","已变","未变"],ans:1,exp:"圣人不治已病治未病，不治已乱治未乱。"},
-{sub:"neijing",q:"《素问·金匮真言论》善病鼽衄的季节是？",opt:["春","夏","秋","冬"],ans:0,exp:"春善病鼽衄。"},
-{sub:"neijing",q:"《素问·金匮真言论》善病胸胁的季节是？",opt:["春","夏","长夏","秋"],ans:1,exp:"夏善病胸胁。"},
-{sub:"neijing",q:"《素问·金匮真言论》善病洞泄寒中的季节？",opt:["春","夏","长夏","冬"],ans:2,exp:"长夏善病洞泄寒中。"},
-{sub:"neijing",q:"《素问·金匮真言论》善病风疟的季节？",opt:["夏","长夏","秋","冬"],ans:2,exp:"秋善病风疟。"},
-{sub:"neijing",q:"《素问·金匮真言论》善病痹厥的季节？",opt:["秋","冬","春","夏"],ans:1,exp:"冬善病痹厥。"},
-{sub:"neijing",q:"《素问·生气通天论》膏粱厚味，足生？",opt:["大丁","痿厥","偏枯","痤疿"],ans:0,exp:"膏粱厚味，足生大丁（疔疮）。"},
-{sub:"neijing",q:"《素问·生气通天论》汗出见湿，乃生？",opt:["痤疿","偏枯","大偻","痿厥"],ans:0,exp:"汗出见湿，乃生痤疿。"},
-{sub:"neijing",q:"《素问·脉要精微论》脉来如鱼之游在波，是？",opt:["肝平脉","心平脉","脾平脉","肾平脉"],ans:0,exp:"肝脉来，软弱招招，如揭长竿末梢；如鱼之游在波为肝平。"},
-{sub:"neijing",q:"《素问·脉要精微论》脉洪大，来盛去衰，为何脏平脉？",opt:["心","肝","脾","肺"],ans:0,exp:"心脉平，脉来累累如连珠，如循琅玕，来盛去衰。"},
-{sub:"neijing",q:"《素问·宣明五气》五脏所藏：心藏？",opt:["神","魂","魄","志"],ans:0,exp:"心藏神，肝藏魂，肺藏魄，脾藏意，肾藏志。"},
-{sub:"neijing",q:"《素问·宣明五气》肝藏？",opt:["神","魂","魄","意"],ans:1,exp:"肝藏魂。"},
-{sub:"neijing",q:"《素问·宣明五气》肺藏？",opt:["魂","魄","意","志"],ans:1,exp:"肺藏魄。"},
-{sub:"neijing",q:"《素问·宣明五气》脾藏？",opt:["魂","魄","意","志"],ans:2,exp:"脾藏意。"},
-{sub:"neijing",q:"《素问·宣明五气》肾藏？",opt:["魂","魄","意","志"],ans:3,exp:"肾藏志。"},
-{sub:"neijing",q:"《素问·宣明五气》久视伤？",opt:["血","气","肉","骨"],ans:0,exp:"久视伤血，久卧伤气，久坐伤肉，久立伤骨，久行伤筋。"},
-{sub:"neijing",q:"《素问·宣明五气》久卧伤？",opt:["血","气","肉","筋"],ans:1,exp:"久卧伤气。"},
-{sub:"neijing",q:"《素问·宣明五气》久坐伤？",opt:["气","肉","骨","筋"],ans:1,exp:"久坐伤肉。"},
-{sub:"neijing",q:"《素问·宣明五气》久立伤？",opt:["肉","骨","筋","血"],ans:1,exp:"久立伤骨。"},
-{sub:"neijing",q:"《素问·宣明五气》久行伤？",opt:["骨","筋","血","气"],ans:1,exp:"久行伤筋。"},
-{sub:"neijing",q:"《灵枢·百病始生》风雨袭虚，则病起于？",opt:["上部","下部","中部","五脏"],ans:0,exp:"风雨袭虚，病起于上；清湿袭虚，病起于下。"},
-{sub:"neijing",q:"《灵枢·百病始生》清湿袭虚，病起于？",opt:["上","下","中","六腑"],ans:1,exp:"清湿袭虚，则病起于下。"},
-{sub:"neijing",q:"《素问·刺热》肝热病者，面色？",opt:["左颊先赤","右颊先赤","额先赤","颏先赤"],ans:0,exp:"肝热左颊先赤；肺热右颊先赤；心热额先赤；肾热颏先赤；脾热鼻先赤。"},
-{sub:"neijing",q:"《素问·刺热》肺热病者？",opt:["左颊赤","右颊赤","额赤","鼻赤"],ans:1,exp:"肺热，右颊先赤。"},
-{sub:"neijing",q:"《素问·刺热》心热病者？",opt:["额先赤","颏先赤","鼻先赤","右颊赤"],ans:0,exp:"心热病，额先赤。"},
-{sub:"neijing",q:"《素问·刺热》脾热病者？",opt:["鼻先赤","颏先赤","额先赤","左颊赤"],ans:0,exp:"脾热病，鼻先赤。"},
-{sub:"neijing",q:"《素问·刺热》肾热病者？",opt:["颏先赤","鼻先赤","额先赤","右颊赤"],ans:0,exp:"肾热病，颏先赤。"},
-{sub:"neijing",q:"《素问·标本病传论》先病而后逆者，治其？",opt:["本","标","标本同治","独治标"],ans:0,exp:"先病而后逆者治其本；先逆而后病者治其本。"},
-{sub:"neijing",q:"《素问·标本病传论》先热而后生中满者，治其？",opt:["标","本","标本","不必治"],ans:0,exp:"中满、大小不利为急，治其标。"},
-{sub:"neijing",q:"《素问·五常政大论》大毒治病，十去其？",opt:["六","七","八","九"],ans:0,exp:"大毒治病，十去其六；常毒治病，十去其七；小毒治病，十去其八；无毒治病，十去其九。"},
-{sub:"neijing",q:"《素问·五常政大论》常毒治病，十去其？",opt:["六","七","八","九"],ans:1,exp:"常毒治病，十去其七。"},
-{sub:"neijing",q:"《素问·五常政大论》小毒治病，十去其？",opt:["六","七","八","九"],ans:2,exp:"小毒治病，十去其八。"},
-{sub:"neijing",q:"《素问·五常政大论》无毒治病，十去其？",opt:["六","七","八","九"],ans:3,exp:"无毒治病，十去其九。"},
-{sub:"neijing",q:"《灵枢·营卫生会》营气循脉，周行一身，一日多少周？",opt:["五十","二十六","十二","八十"],ans:0,exp:"营卫五十而复大会。"},
-{sub:"neijing",q:"《灵枢·营卫生会》上焦如？",opt:["雾","沤","渎","衡"],ans:0,exp:"上焦如雾，中焦如沤，下焦如渎。"},
-{sub:"neijing",q:"《灵枢·营卫生会》中焦如？",opt:["雾","沤","渎","衡"],ans:1,exp:"中焦如沤。"},
-{sub:"neijing",q:"《灵枢·营卫生会》下焦如？",opt:["雾","沤","渎","权"],ans:2,exp:"下焦如渎。"},
-{sub:"neijing",q:"《素问·调经论》阳虚则？",opt:["外寒","内热","外热","内寒"],ans:0,exp:"阳虚则外寒；阴虚则内热；阳盛则外热；阴盛则内寒。"},
-{sub:"neijing",q:"《素问·调经论》阴虚则？",opt:["外寒","内热","外热","内寒"],ans:1,exp:"阴虚则内热。"},
-{sub:"neijing",q:"《素问·调经论》阳盛则？",opt:["外寒","内热","外热","内寒"],ans:2,exp:"阳盛则外热。"},
-{sub:"neijing",q:"《素问·调经论》阴盛则？",opt:["外寒","内热","外热","内寒"],ans:3,exp:"阴盛则内寒。"},
-{sub:"neijing",q:"《素问·骨空论》督脉者，起于？",opt:["少腹以下骨中央","胞中","肾下","气街"],ans:0,exp:"督脉起于少腹以下骨中央。"},
-{sub:"neijing",q:"《素问·骨空论》任脉为病，男子内结七疝，女子？",opt:["带下瘕聚","不孕","崩漏","癥瘕"],ans:0,exp:"任脉为病，男子内结七疝，女子带下瘕聚。"},
-{sub:"neijing",q:"《素问·至真要大论》诸转反戾，水液浑浊，皆属于？",opt:["热","寒","湿","风"],ans:0,exp:"诸转反戾，水液浑浊，皆属于热。"},
-{sub:"neijing",q:"《素问·至真要大论》诸病水液，澄澈清冷，皆属于？",opt:["寒","热","湿","燥"],ans:0,exp:"诸病水液，澄澈清冷，皆属于寒。"},
-{sub:"neijing",q:"《灵枢·口问》上气不足，为之不满。",opt:["脑","胸","腹","四肢"],ans:0,exp:"上气不足，脑为之不满，耳为之苦鸣。"},
 // ========== 伤寒论 50题 ==========
 {sub:"shanghan",q:"太阳病，头痛发热，身疼腰痛，骨节疼痛，恶风，无汗而喘者，治宜？",opt:["桂枝汤","麻黄汤","葛根汤","大青龙汤"],ans:1,exp:"麻黄汤证：太阳伤寒表实，无汗、身痛、喘。"},
 {sub:"shanghan",q:"太阳中风，阳浮而阴弱，阳浮者热自发，阴弱者汗自出，宜？",opt:["麻黄汤","桂枝汤","桂枝加葛根汤","桂枝加厚朴杏子汤"],ans:1,exp:"桂枝汤，太阳中风表虚，发热汗出恶风。"},
@@ -228,11 +178,11 @@ const questionList = [
 {sub:"shanghan",q:"阳明病，潮热，手足濈然汗出，大便硬，谵语，腹满痛，方？",opt:["大承气汤","小承气汤","调胃承气汤","大柴胡汤"],ans:0,exp:"大承气，痞满燥实四证俱全。"},
 {sub:"shanghan",q:"趺阳脉浮而涩，浮则胃气强，涩则小便数，浮涩相搏，大便则硬，其脾为约，方？",opt:["麻子仁丸","五仁丸","蜜煎导","大承气汤"],ans:0,exp:"麻子仁丸，脾约证，胃强脾弱，小便数大便硬。"},
 {sub:"shanghan",q:"阳明病，脉迟，汗出多，微恶寒者，表未解也，可发汗，宜？",opt:["麻黄汤","桂枝汤","葛根汤","桂枝加葛根汤"],ans:1,exp:"阳明兼太阳表证，有汗微恶寒，桂枝汤。"},
-{sub:"shanghan",q:"少阳之为病，口苦，咽干，也。",opt:["目眩","耳聋","胁痛","往来寒热"],ans:0,exp:"少阳提纲：口苦咽干目眩。"},
+{sub:"shanghan",q:"少阳之为病，口苦，咽干，____也。",opt:["目眩","耳聋","胁痛","往来寒热"],ans:0,exp:"少阳提纲：口苦咽干目眩。"},
 {sub:"shanghan",q:"伤寒，脉弦细，头痛发热者，属？",opt:["太阳","阳明","少阳","厥阴"],ans:2,exp:"脉弦细是少阳脉，不可发汗。"},
-{sub:"shanghan",q:"太阴之为病，腹满而吐，食不下，自利益甚，时腹自痛，若下之，必。",opt:["胸下结硬","烦躁","厥逆","发黄"],ans:0,exp:"太阴提纲，脾虚寒湿，误下则中阳更伤，结硬。"},
+{sub:"shanghan",q:"太阴之为病，腹满而吐，食不下，自利益甚，时腹自痛，若下之，必____。",opt:["胸下结硬","烦躁","厥逆","发黄"],ans:0,exp:"太阴提纲，脾虚寒湿，误下则中阳更伤，结硬。"},
 {sub:"shanghan",q:"自利不渴者，属太阴，以其藏有寒故也，当温之，宜服？",opt:["四逆汤","理中丸","附子汤","真武汤"],ans:1,exp:"理中（人参）汤，太阴寒湿自利不渴。"},
-{sub:"shanghan",q:"少阴之为病，脉微细，也。",opt:["但欲寐","恶寒","下利","厥逆"],ans:0,exp:"少阴提纲：脉微细，但欲寐。"},
+{sub:"shanghan",q:"少阴之为病，脉微细，____也。",opt:["但欲寐","恶寒","下利","厥逆"],ans:0,exp:"少阴提纲：脉微细，但欲寐。"},
 {sub:"shanghan",q:"少阴病，始得之，反发热，脉沉者，方？",opt:["麻黄附子细辛汤","麻黄附子甘草汤","四逆汤","附子汤"],ans:0,exp:"少阴兼表，太少两感，初起发热脉沉。"},
 {sub:"shanghan",q:"少阴病，得之二三日，麻黄附子甘草汤微发汗，原因是？",opt:["微邪在表，证轻","水饮内停","寒盛于里","阳脱"],ans:0,exp:"病程稍久，表邪轻微，用甘草缓温。"},
 {sub:"shanghan",q:"少阴病，身体痛，手足寒，骨节痛，脉沉者，方？",opt:["附子汤","真武汤","四逆汤","当归四逆汤"],ans:0,exp:"附子汤，少阴阳虚寒湿，身痛骨节痛脉沉。"},
@@ -245,7 +195,7 @@ const questionList = [
 {sub:"shanghan",q:"手足厥寒，脉细欲绝者，方？",opt:["四逆汤","当归四逆汤","当归四逆加吴茱萸生姜汤","乌梅丸"],ans:1,exp:"当归四逆，血虚寒厥，脉细。"},
 {sub:"shanghan",q:"干呕，吐涎沫，头痛者，方？",opt:["吴茱萸汤","半夏干姜散","小半夏汤","四逆汤"],ans:0,exp:"吴茱萸汤，肝胃虚寒，浊阴上逆，巅顶头痛。"},
 {sub:"shanghan",q:"伤寒，脉滑而厥者，里有热，宜？",opt:["白虎汤","四逆汤","当归四逆汤","白头翁汤"],ans:0,exp:"热厥，里热郁闭，脉滑，白虎清里热。"},
-// ========== 金匮要略 100题 ==========
+// ========== 金匮要略 50题 ==========
 {sub:"jinkui",q:"《金匮》见肝之病，知肝传脾，当先？",opt:["清肝","实脾","补肾","和胃"],ans:1,exp:"见肝之病，当先实脾，治未病思想。"},
 {sub:"jinkui",q:"虚劳里急，悸，衄，腹中痛，梦失精，四肢酸疼，手足烦热，咽干口燥，方？",opt:["小建中汤","黄芪建中汤","桂枝加龙骨牡蛎汤","酸枣仁汤"],ans:0,exp:"小建中，阴阳两虚虚劳，里急腹痛，烦热失精。"},
 {sub:"jinkui",q:"虚劳里急，诸不足，方？",opt:["小建中汤","黄芪建中汤","八味肾气丸","薯蓣丸"],ans:1,exp:"黄芪建中，小建中基础气虚更重，加黄芪。"},
@@ -266,20 +216,20 @@ const questionList = [
 {sub:"jinkui",q:"阳毒之为病，面赤斑斑如锦纹，咽喉痛，唾脓血，方？",opt:["升麻鳖甲汤","赤小豆当归散","黄连解毒汤","犀角地黄汤"],ans:0,exp:"升麻鳖甲汤，阴阳毒。"},
 {sub:"jinkui",q:"疟母，此结为癥瘕，名曰疟母，急治之，宜？",opt:["鳖甲煎丸","蜀漆散","白虎加桂枝汤","柴胡去半夏加栝蒌汤"],ans:0,exp:"鳖甲煎丸，久疟不愈，疟母结块。"},
 {sub:"jinkui",q:"温疟者，其脉如平，身无寒但热，骨节疼烦，时呕，方？",opt:["白虎加桂枝汤","白虎汤","蜀漆散","鳖甲煎丸"],ans:0,exp:"温疟，里热兼表，无寒但热骨痛。"},
-{sub:"jinkui",q:"中风，手足拘急，百脉一宗，悉致其病，邪在于络，；邪在于经，。",opt:["肌肤不仁，即重不胜","即重不胜，肌肤不仁","舌即难言，口吐涎","不识人"],ans:0,exp:"邪在络肌肤不仁；邪在经肢体重滞；邪入腑不识人；邪入脏舌难言。"},
+{sub:"jinkui",q:"中风，手足拘急，百脉一宗，悉致其病，邪在于络，____；邪在于经，____。",opt:["肌肤不仁，即重不胜","即重不胜，肌肤不仁","舌即难言，口吐涎","不识人"],ans:0,exp:"邪在络肌肤不仁；邪在经肢体重滞；邪入腑不识人；邪入脏舌难言。"},
 {sub:"jinkui",q:"血痹，阴阳俱微，寸口关上微，尺中小紧，外证身体不仁，如风痹状，方？",opt:["黄芪桂枝五物汤","桂枝汤","当归四逆汤","防己黄芪汤"],ans:0,exp:"黄芪桂枝五物，血痹，气虚血滞肌肤麻木。"},
 {sub:"jinkui",q:"胸痹之病，喘息咳唾，胸背痛，短气，寸口脉沉而迟，关上小紧数，方？",opt:["栝蒌薤白白酒汤","栝蒌薤白半夏汤","枳实薤白桂枝汤","人参汤"],ans:0,exp:"胸痹基础方栝蒌薤白白酒，胸背痛短气。"},
 {sub:"jinkui",q:"胸痹，不得卧，心痛彻背者，方？",opt:["栝蒌薤白白酒汤","栝蒌薤白半夏汤","枳实薤白桂枝汤","乌头赤石脂丸"],ans:1,exp:"痰浊更重，不得卧，栝蒌薤白半夏汤。"},
 {sub:"jinkui",q:"胸痹，心中痞气，气结在胸，胸满，胁下逆抢心，方？",opt:["枳实薤白桂枝汤","人参汤","栝蒌薤白半夏汤","茯苓杏仁甘草汤"],ans:0,exp:"枳实薤白桂枝，胸痹偏实证，胁下逆气上冲。"},
-{sub:"jinkui",q:"胸痹，胸中气塞，短气，茯苓杏仁甘草汤主之；亦主之。",opt:["橘枳姜汤","桂枝生姜枳实汤","人参汤","薏苡附子散"],ans:0,exp:"茯苓杏仁甘草偏饮；橘枳姜汤偏气滞。"},
+{sub:"jinkui",q:"胸痹，胸中气塞，短气，茯苓杏仁甘草汤主之；____亦主之。",opt:["橘枳姜汤","桂枝生姜枳实汤","人参汤","薏苡附子散"],ans:0,exp:"茯苓杏仁甘草偏饮；橘枳姜汤偏气滞。"},
 {sub:"jinkui",q:"心痛彻背，背痛彻心，方？",opt:["乌头赤石脂丸","薏苡附子散","栝蒌薤白半夏汤","桂枝生姜枳实汤"],ans:0,exp:"乌头赤石脂丸，阴寒极盛，剧痛放射。"},
-{sub:"jinkui",q:"腹满时减，复如故，此为寒，当与。",opt:["温药","下法","清法","和法"],ans:0,exp:"虚寒腹满，时轻时重，温之。"},
+{sub:"jinkui",q:"腹满时减，复如故，此为寒，当与____。",opt:["温药","下法","清法","和法"],ans:0,exp:"虚寒腹满，时轻时重，温之。"},
 {sub:"jinkui",q:"病腹满，发热十日，脉浮而数，饮食如故，方？",opt:["厚朴七物汤","厚朴三物汤","大柴胡汤","大承气汤"],ans:0,exp:"厚朴七物，太阳阳明合病腹满发热。"},
 {sub:"jinkui",q:"痛而闭者，方？",opt:["厚朴三物汤","大承气汤","厚朴七物","小承气"],ans:0,exp:"厚朴三物，气滞里实，以胀为主。"},
 {sub:"jinkui",q:"按之心下满痛者，此为实也，当下之，宜？",opt:["大柴胡汤","大承气汤","厚朴三物","厚朴七物"],ans:0,exp:"大柴胡，少阳阳明同病，心下满痛。"},
 {sub:"jinkui",q:"寒疝腹中痛，逆冷，手足不仁，若身疼痛，灸刺诸药不能治，方？",opt:["乌头桂枝汤","大乌头煎","当归生姜羊肉汤","附子粳米汤"],ans:0,exp:"乌头桂枝，寒疝兼表寒。"},
 {sub:"jinkui",q:"寒疝绕脐痛，若发则白汗出，手足厥冷，其脉沉紧者，方？",opt:["大乌头煎","乌头桂枝汤","当归生姜羊肉汤","附子粳米汤"],ans:0,exp:"大乌头煎，阴寒剧痛，寒疝重证。"},
-{sub:"jinkui",q:"产后腹中㽲痛，当归生姜羊肉汤主之，并治腹中寒疝，。",opt:["虚劳不足","瘀血腹痛","气滞腹痛","水饮腹痛"],ans:0,exp:"当归生姜羊肉，血虚寒痛，温补养血散寒。"},
+{sub:"jinkui",q:"产后腹中㽲痛，当归生姜羊肉汤主之，并治腹中寒疝，____。",opt:["虚劳不足","瘀血腹痛","气滞腹痛","水饮腹痛"],ans:0,exp:"当归生姜羊肉，血虚寒痛，温补养血散寒。"},
 {sub:"jinkui",q:"妇人怀妊，腹中㽲痛，方？",opt:["当归芍药散","胶艾汤","桂枝茯苓丸","枳实芍药散"],ans:0,exp:"当归芍药散，妊娠肝脾不和，腹中绵绵痛。"},
 {sub:"jinkui",q:"妇人有漏下者，有半产后因续下血都不绝者，有妊娠下血者，方？",opt:["胶艾汤","当归芍药散","桂枝茯苓丸","芎归胶艾汤即胶艾汤"],ans:0,exp:"胶艾汤，冲任虚损下血，养血止血安胎。"},
 {sub:"jinkui",q:"妇人宿有癥病，经断未及三月，而得漏下不止，胎动在脐上者，为癥痼害，方？",opt:["桂枝茯苓丸","胶艾汤","当归芍药散","枳实芍药散"],ans:0,exp:"桂枝茯苓，癥积瘀血，化瘀消癥，缓攻。"},
@@ -296,62 +246,12 @@ const questionList = [
 {sub:"jinkui",q:"酒黄疸，心中懊憹或热痛，方？",opt:["栀子大黄汤","茵陈蒿汤","大黄硝石汤","硝石矾石散"],ans:0,exp:"酒疸，湿热偏上，心中懊憹热痛。"},
 {sub:"jinkui",q:"黄疸病，茵陈五苓散适合哪一类？",opt:["湿重于热","热重于湿","湿热俱重","寒湿阴黄"],ans:0,exp:"茵陈五苓，利湿清热，湿重于热黄疸。"},
 {sub:"jinkui",q:"诸呕吐，谷不得下者，方？",opt:["小半夏汤","大半夏汤","半夏干姜散","生姜半夏汤"],ans:0,exp:"小半夏汤，痰饮呕吐基础方。"},
-{sub:"jinkui",q:"《金匮》上工治未病，中工？",opt:["治已病","治未传","治其标","治其本"],ans:0,exp:"上工治未病，中工治已病。"},
-{sub:"jinkui",q:"夫男子平人，脉大为？",opt:["劳","实","热","痰"],ans:0,exp:"男子平人，脉大为劳，极虚亦为劳。"},
-{sub:"jinkui",q:"痉病，其脉？",opt:["紧","浮","沉","迟"],ans:0,exp:"痉，脉紧。"},
-{sub:"jinkui",q:"太阳中暍，发热恶寒，身重而疼痛，其脉弦细芤迟，方？",opt:["白虎加人参汤","新加香薷饮","三石汤","清暑益气汤"],ans:0,exp:"中暍，暑热伤气津，白虎加人参。"},
-{sub:"jinkui",q:"太阳中暍，身热疼重，而脉微弱，此以夏月伤冷水，水行皮中所致也，方？",opt:["一物瓜蒂汤","白虎加人参","香薷散","三仁汤"],ans:0,exp:"暑夹水湿，一物瓜蒂汤。"},
-{sub:"jinkui",q:"百合病，见于阴者，以阳法救之；见于阳者，以阴法救之，见阳攻阴，复发其汗，此为？",opt:["逆","顺","和","平"],ans:0,exp:"百合病阴阳俱虚，误攻为逆。"},
-{sub:"jinkui",q:"狐惑，蚀于上部则声喝，方？",opt:["甘草泻心汤","苦参汤","雄黄熏","赤小豆当归散"],ans:0,exp:"蚀于喉上部，甘草泻心；蚀于下用苦参汤外洗。"},
-{sub:"jinkui",q:"病者脉数，无热，微烦，默默但欲卧，汗出，初得之三四日，目赤如鸠眼，七八日，目四眦黑，若能食者，脓已成也，方？",opt:["赤小豆当归散","升麻鳖甲汤","甘草泻心","薏苡附子败酱散"],ans:0,exp:"阴阳毒、内痈脓成，赤小豆当归散排脓。"},
-{sub:"jinkui",q:"疟，脉自弦，弦数者多？",opt:["热","寒","虚","湿"],ans:0,exp:"弦数多热，弦迟多寒。"},
-{sub:"jinkui",q:"疟多寒者，名曰牝疟，方？",opt:["蜀漆散","白虎加桂枝汤","鳖甲煎丸","柴胡去半夏加栝蒌汤"],ans:0,exp:"牝疟，寒多热少，蜀漆散。"},
-{sub:"jinkui",q:"中风，邪入于腑，即？",opt:["不识人","肌肤不仁","舌难言","肢重不胜"],ans:0,exp:"邪在络肌肤不仁；经即重不胜；腑不识人；脏舌难言。"},
-{sub:"jinkui",q:"中风，邪入于脏，即？",opt:["舌即难言，口吐涎","不识人","肌肤不仁","身重"],ans:0,exp:"邪入脏，舌难言，口吐涎。"},
-{sub:"jinkui",q:"历节病，不可屈伸，疼痛，方？",opt:["乌头汤","桂枝芍药知母汤","甘草附子汤","白虎加桂枝汤"],ans:0,exp:"寒湿历节剧痛，乌头汤。"},
-{sub:"jinkui",q:"诸肢节疼痛，身体尪羸，脚肿如脱，头眩短气，温温欲吐，方？",opt:["桂枝芍药知母汤","乌头汤","甘草附子","白虎加桂枝"],ans:0,exp:"风湿化热，历节，桂枝芍药知母汤。"},
-{sub:"jinkui",q:"胸痹，胸中痞，胁下逆抢心，偏虚用人参汤，其病机是？",opt:["中阳不振","痰浊壅盛","气滞血瘀","水饮"],ans:0,exp:"人参汤（理中），虚寒胸痹。"},
-{sub:"jinkui",q:"心中痞，诸逆心悬痛，方？",opt:["桂枝生姜枳实汤","乌头赤石脂丸","栝蒌薤白半夏汤","橘枳姜汤"],ans:0,exp:"寒饮上逆，心悬痛，桂枝生姜枳实汤。"},
-{sub:"jinkui",q:"腹满，口舌干燥，此肠间有水气，方？",opt:["己椒苈黄丸","甘遂半夏汤","十枣汤","五苓散"],ans:0,exp:"肠间水饮，己椒苈黄丸，前后分消。"},
-{sub:"jinkui",q:"病者脉伏，其人欲自利，利反快，虽利，心下续坚满，此为留饮欲去故也，方？",opt:["甘遂半夏汤","己椒苈黄","十枣汤","木防己汤"],ans:0,exp:"留饮，自利反快，甘遂半夏汤。"},
-{sub:"jinkui",q:"膈间支饮，其人喘满，心下痞坚，面色黧黑，其脉沉紧，得之数十日，医吐下之不愈，方？",opt:["木防己汤","木防己去石膏加茯苓芒硝汤","十枣汤","葶苈大枣泻肺汤"],ans:0,exp:"支饮夹热，木防己汤。"},
-{sub:"jinkui",q:"支饮不得息，方？",opt:["葶苈大枣泻肺汤","小青龙汤","苓甘五味姜辛汤","十枣汤"],ans:0,exp:"支饮壅肺，喘急不得息，葶苈大枣泻肺汤。"},
-{sub:"jinkui",q:"咳逆倚息不得卧，小青龙汤主之；服后多唾口燥，寸脉沉，尺脉微，手足厥逆，气从小腹上冲胸咽，方？",opt:["苓桂五味甘草汤","苓甘五味姜辛汤","苓甘五味加姜辛半夏杏仁汤","苓甘五味加姜辛半杏大黄汤"],ans:0,exp:"冲气上逆，苓桂五味甘草汤平冲。"},
-{sub:"jinkui",q:"冲气即低，而反更咳，胸满者，方？",opt:["苓甘五味姜辛汤","苓桂五味甘草","小青龙","十枣汤"],ans:0,exp:"冲平，寒饮复动而咳满，苓甘五味姜辛。"},
-{sub:"jinkui",q:"先渴后呕，为水停心下，此属饮家，方？",opt:["小半夏加茯苓汤","小半夏汤","五苓散","猪苓汤"],ans:0,exp:"水饮兼眩悸，小半夏加茯苓。"},
-{sub:"jinkui",q:"呕家本渴，渴者为欲解，今反不渴，心下有支饮故也，方？",opt:["小半夏汤","小半夏加茯苓","泽泻汤","猪苓散"],ans:0,exp:"支饮呕而不渴，小半夏汤。"},
-{sub:"jinkui",q:"心下有支饮，其人苦冒眩，方？",opt:["泽泻汤","苓桂术甘汤","小半夏加茯苓","五苓散"],ans:0,exp:"支饮上蒙清阳，冒眩，泽泻汤。"},
-{sub:"jinkui",q:"小便不利者，蒲灰散主之，病机？",opt:["湿热瘀结膀胱","肾阳不足","水热互结","脾虚水停"],ans:0,exp:"蒲灰散化瘀清热利小便。"},
-{sub:"jinkui",q:"风水，脉浮，身重，汗出恶风者，防己黄芪汤，其病机？",opt:["表虚风湿","风水夹热","皮水脾虚","正水阳虚"],ans:0,exp:"卫气不固，风湿在表。"},
-{sub:"jinkui",q:"里水，越婢加术汤主之，里水指？",opt:["皮水","风水","正水","石水"],ans:0,exp:"里水即皮水，一身面目黄肿。"},
-{sub:"jinkui",q:"正水，其脉沉迟，外证？",opt:["自喘","恶风","不渴","腹满无喘"],ans:0,exp:"正水，肾阳虚水停，脉沉迟，自喘。"},
-{sub:"jinkui",q:"石水，其脉自沉，外证？",opt:["腹满不喘","喘","恶风","身热"],ans:0,exp:"石水，水结下焦，腹满不喘。"},
-{sub:"jinkui",q:"黄汗之为病，身体肿，发热汗出而渴，状如风水，汗沾衣，色正黄如柏汁，脉自沉，方？",opt:["黄芪芍桂苦酒汤","桂枝加黄芪汤","越婢汤","防己黄芪汤"],ans:0,exp:"黄汗，湿热郁滞营卫，黄芪芍桂苦酒汤。"},
-{sub:"jinkui",q:"诸黄，腹痛而呕者，宜？",opt:["柴胡汤","茵陈蒿汤","栀子大黄汤","硝石矾石散"],ans:0,exp:"黄疸兼少阳，腹痛呕，柴胡。"},
-{sub:"jinkui",q:"黄疸，病在女劳，额上黑，微汗出，手足中热，薄暮即发，膀胱急，小便自利，方？",opt:["硝石矾石散","茵陈蒿汤","栀子大黄汤","大黄硝石汤"],ans:0,exp:"女劳疸，肾虚夹瘀，硝石矾石散。"},
-{sub:"jinkui",q:"黄疸，腹满，小便不利而赤，自汗出，此为表和里实，当下之，方？",opt:["大黄硝石汤","茵陈蒿汤","栀子大黄汤","硝石矾石散"],ans:0,exp:"黄疸热盛腑实，大黄硝石汤。"},
-{sub:"jinkui",q:"呕吐，哕，下利，病皆属于？",opt:["脾胃","肝胆","肺肾","三焦"],ans:0,exp:"呕哕利，病位核心在脾胃。"},
-{sub:"jinkui",q:"干呕，吐逆，吐涎沫，方？",opt:["半夏干姜散","小半夏汤","生姜半夏汤","吴茱萸汤"],ans:0,exp:"中阳不足，寒饮上逆，半夏干姜散。"},
-{sub:"jinkui",q:"病人胸中似喘不喘，似呕不呕，似哕不哕，彻心中愦愦然无奈者，方？",opt:["生姜半夏汤","半夏干姜散","小半夏汤","旋覆代赭汤"],ans:0,exp:"寒饮扰胸，气机郁滞，生姜半夏汤。"},
-{sub:"jinkui",q:"哕逆者，方？",opt:["橘皮竹茹汤","橘皮汤","旋覆代赭","吴茱萸汤"],ans:0,exp:"胃虚有热，哕逆，橘皮竹茹汤。"},
-{sub:"jinkui",q:"干呕，哕，若手足厥者，方？",opt:["橘皮汤","橘皮竹茹汤","四逆汤","吴茱萸汤"],ans:0,exp:"胃寒气闭，哕而厥，橘皮汤通胃阳。"},
-{sub:"jinkui",q:"下利，脉沉而迟，其人面少赤，身有微热，下利清谷者，必郁冒汗出而解，为何？",opt:["阳气渐复","阳盛","阴盛","邪热外透"],ans:0,exp:"戴阳轻症，阳气恢复，郁冒汗解。"},
-{sub:"jinkui",q:"下利清谷，里寒外热，汗出而厥者，方？",opt:["通脉四逆汤","四逆汤","白通汤","附子汤"],ans:0,exp:"阴盛格阳重证，通脉四逆。"},
-{sub:"jinkui",q:"气利，诃梨勒散主之，气利是？",opt:["矢气随利而出","气滞便秘","里急后重","腹胀嗳气"],ans:0,exp:"气虚滑脱，矢气与粪便同出，叫气利。"},
-{sub:"jinkui",q:"妇人妊娠，宜常服当归散，适合哪种体质？",opt:["血虚湿热","阳虚寒盛","纯虚寒","瘀血"],ans:0,exp:"当归散养血清热，血虚有湿热胎动不安。"},
-{sub:"jinkui",q:"妊娠养胎，白术散主之，适合？",opt:["脾虚寒湿","血虚湿热","血热","瘀阻"],ans:0,exp:"白术散健脾除湿，安胎，脾虚寒湿。"},
-{sub:"jinkui",q:"产后风，续之数十日不解，头微痛，恶寒，时时有热，心下闷，干呕，汗出，方？",opt:["竹叶汤","桂枝汤","柴胡桂枝汤","小柴胡汤"],ans:0,exp:"产后阳虚外感，竹叶汤，扶正解表。"},
-{sub:"jinkui",q:"妇人乳中虚，烦乱呕逆，安中益气，方？",opt:["竹皮大丸","橘皮竹茹汤","麦门冬汤","温经汤"],ans:0,exp:"产后乳虚，虚热上扰，竹皮大丸。"},
-{sub:"jinkui",q:"带下，经水不利，少腹满痛，经一月再见者，方？",opt:["土瓜根散","桂枝茯苓丸","温经汤","当归芍药散"],ans:0,exp:"瘀血经水不利，土瓜根散。"},
-{sub:"jinkui",q:"妇人阴寒，温阴中坐药，方？",opt:["蛇床子散","矾石丸","狼牙汤","苦参汤"],ans:0,exp:"寒湿阴冷，蛇床子散坐药。"},
-{sub:"jinkui",q:"少阴脉滑而数者，阴中即生疮，阴中蚀疮烂者，方？",opt:["狼牙汤","蛇床子散","矾石丸","苦参汤"],ans:0,exp:"湿热蚀疮，狼牙汤外洗。"},
-{sub:"jinkui",q:"问曰：妇人病，饮食如故，烦热不得卧，而反倚息者，何也？师曰：此名转胞，方？",opt:["肾气丸","五苓散","猪苓汤","栝蒌瞿麦丸"],ans:0,exp:"肾虚气化不利，胞系了戾，转胞，肾气丸。"},
 // ========== 温病 60题 ==========
-{sub:"wenbing",q:"叶天士《外感温热篇》：温邪上受，首先犯，逆传。",opt:["肺，心包","卫，营","肺，胃","上焦，中焦"],ans:0,exp:"温病总纲：温邪上受，首先犯肺，逆传心包。"},
-{sub:"wenbing",q:"叶天士：在卫，到气，入营____，入血____。",opt:["汗之可也，才可清气，犹可透热转气，直须凉血散血","清气，透营，凉血，散血","发汗，攻下，清营，止血","辛凉，苦寒，咸寒，酸寒"],ans:0,exp:"卫气营血治法纲领。"},
+{sub:"wenbing",q:"叶天士《外感温热篇》：温邪上受，首先犯____，逆传____。",opt:["肺，心包","卫，营","肺，胃","上焦，中焦"],ans:0,exp:"温病总纲：温邪上受，首先犯肺，逆传心包。"},
+{sub:"wenbing",q:"叶天士：在卫____，到气____，入营____，入血____。",opt:["汗之可也，才可清气，犹可透热转气，直须凉血散血","清气，透营，凉血，散血","发汗，攻下，清营，止血","辛凉，苦寒，咸寒，酸寒"],ans:0,exp:"卫气营血治法纲领。"},
 {sub:"wenbing",q:"叶天士，舌绛而干，为？",opt:["热入营分","热入血分","卫分热盛","气分热盛"],ans:0,exp:"舌绛提示营分热；舌深绛紫暗为血分。"},
 {sub:"wenbing",q:"吴鞠通《温病条辨》提出三焦辨证，上焦病位主要是？",opt:["肺与心包","脾胃","肝肾","胆与大肠"],ans:0,exp:"上焦：肺、心包；中焦：脾胃；下焦：肝肾。"},
-{sub:"wenbing",q:"吴鞠通，太阴风温、温热、温疫、冬温，初起恶风寒者，主之；但热不恶寒而渴者，主之。",opt:["桂枝汤，银翘散","银翘散，桑菊饮","桂枝汤，白虎汤","桑菊饮，银翘散"],ans:0,exp:"温病初起，有风寒表证暂用桂枝；纯温热用银翘散。"},
+{sub:"wenbing",q:"吴鞠通，太阴风温、温热、温疫、冬温，初起恶风寒者，____主之；但热不恶寒而渴者，____主之。",opt:["桂枝汤，银翘散","银翘散，桑菊饮","桂枝汤，白虎汤","桑菊饮，银翘散"],ans:0,exp:"温病初起，有风寒表证暂用桂枝；纯温热用银翘散。"},
 {sub:"wenbing",q:"太阴风温，但咳，身不甚热，微渴者，何方？",opt:["银翘散","桑菊饮","麻杏石甘汤","白虎汤"],ans:1,exp:"桑菊饮，辛凉轻剂，以咳嗽为主，热轻。"},
 {sub:"wenbing",q:"太阴温病，脉浮洪，舌黄，渴甚，大汗，面赤，恶热，方？",opt:["白虎汤","银翘散","桑菊饮","麻杏石甘汤"],ans:0,exp:"辛凉重剂白虎汤，气分大热四大证。"},
 {sub:"wenbing",q:"太阳温病，发汗而汗不出，发疹，宜？",opt:["银翘散去豆豉加细生地丹皮大青叶倍玄参方","化斑汤","清营汤","犀角地黄汤"],ans:0,exp:"银翘散加减，透疹凉营。"},
@@ -390,7 +290,7 @@ const questionList = [
 {sub:"wenbing",q:"薛生白：湿热证，数日后，汗出热不除，或痉，忽头痛不止者，营液大亏，风火上升，宜？",opt:["羚羊角、蔓荆、钩藤、生地等","羚角钩藤汤","大定风珠","三甲复脉"],ans:0,exp:"湿热伤阴，风阳上冒头痛痉。"},
 {sub:"wenbing",q:"陈平伯《外感温病篇》，风温为病，春月与冬季居多，或恶风，或不恶风，必身热，咳嗽，烦渴，病位在？",opt:["肺胃","卫营","上焦心包","肝胆"],ans:0,exp:"风温，肺胃热盛为主。"},
 {sub:"wenbing",q:"余师愚论疫，认为疫疹的根本病机是？",opt:["胃热","肺热","心包热","肝胆热"],ans:0,exp:"余氏疫疹，以胃热为本，石膏为核心药。"},
-{sub:"wenbing",q:"温病中，斑和疹鉴别，斑出自，疹出自。",opt:["血络，卫分","气分，血络","营分，气分","肺，胃"],ans:0,exp:"斑：肌肉血络；疹：肺卫。斑宜清化，疹宜透发。"},
+{sub:"wenbing",q:"温病中，斑和疹鉴别，斑出自____，疹出自____。",opt:["血络，卫分","气分，血络","营分，气分","肺，胃"],ans:0,exp:"斑：肌肉血络；疹：肺卫。斑宜清化，疹宜透发。"},
 {sub:"wenbing",q:"斑的治法禁忌，哪一项错误？",opt:["提透","清火","凉血","散血"],ans:0,exp:"斑忌辛温提透，容易动血加重出血。"},
 {sub:"wenbing",q:"舌绛而有黄苔，说明？",opt:["营分热，气分未尽","纯营分热","血分热","卫气同病"],ans:0,exp:"绛舌为营，夹黄苔，气营两燔，气分之邪未罢。"},
 {sub:"wenbing",q:"舌紫暗而润，多见于？",opt:["寒凝血瘀","热盛血瘀","阴虚","湿热"],ans:0,exp:"紫暗湿润是寒瘀；紫绛干枯为热瘀。"},
@@ -438,151 +338,151 @@ const rateBtns = document.querySelectorAll(".rate-btn");
 
 // 科目名字映射
 const subName = {
-neijing:"内经",
-shanghan:"伤寒论",
-jinkui:"金匮要略",
-wenbing:"温病条辨"
+  neijing:"内经",
+  shanghan:"伤寒论",
+  jinkui:"金匮要略",
+  wenbing:"温病条辨"
 };
 
 // 更新统计面板
 function updateStat(){
-let done=0,master=0;
-questionList.forEach((item,i)=>{
-const rec = memory[i];
-if(rec && rec.choose!null){
-done++;
-if(rec.rate=3) master++;
-}
-})
-totalEl.innerText = questionList.length;
-doneEl.innerText =done;
-masterEl.innerText = master;
-localStorage.setItem("tcmQuizMem",JSON.stringify(memory));
+  let done=0,master=0;
+  questionList.forEach((item,i)=>{
+    const rec = memory[i];
+    if(rec && rec.choose!==null){
+      done++;
+      if(rec.rate===3) master++;
+    }
+  })
+  totalEl.innerText = questionList.length;
+  doneEl.innerText = done;
+  masterEl.innerText = master;
+  localStorage.setItem("tcmQuizMem",JSON.stringify(memory));
 }
 
 // 生成刷题池（筛选）
 function makePool(){
-renderPool = questionList.map((v,i)=>({...v,idx:i}));
-if(filterSubject!"all") renderPool = renderPool.filter(x=>x.sub=filterSubject);
-if(wrongOnly) renderPool = renderPool.filter(x=>{
-const r = memory[x.idx];
-return r && r.choose!==null && r.rate < 3;
-})
+  renderPool = questionList.map((v,i)=>({...v,idx:i}));
+  if(filterSubject!=="all") renderPool = renderPool.filter(x=>x.sub===filterSubject);
+  if(wrongOnly) renderPool = renderPool.filter(x=>{
+    const r = memory[x.idx];
+    return r && r.choose!==null && r.rate < 3;
+  })
 }
 
 // 渲染当前题目：读取该题自己的全部状态
 function render(){
-if(renderPool.length===0){
-qWrap.style.display="none";
-filterTip.innerText="当前筛选下没有题目";
-return;
-}
-qWrap.style.display="block";
-filterTip.innerText = wrongOnly?"模式：只看错题":"模式：正常刷题";
-const cur = renderPool[currentIdx];
-subjectTag.innerText = subName[cur.sub];
-qIndexEl.innerText = ${currentIdx+1}/${renderPool.length};
-qText.innerText = cur.q;
-optWrap.innerHTML = "";
-ansText.innerText = cur.exp;
+  if(renderPool.length===0){
+    qWrap.style.display="none";
+    filterTip.innerText="当前筛选下没有题目";
+    return;
+  }
+  qWrap.style.display="block";
+  filterTip.innerText = wrongOnly?"模式：只看错题":"模式：正常刷题";
+  const cur = renderPool[currentIdx];
+  subjectTag.innerText = subName[cur.sub];
+  qIndexEl.innerText = `${currentIdx+1}/${renderPool.length}`;
+  qText.innerText = cur.q;
+  optWrap.innerHTML = "";
+  ansText.innerText = cur.exp;
 
-// 不存在记录就初始化一条
-if(!memory[cur.idx]){
-memory[cur.idx] = {choose:null, rate:2, showAns:false};
-}
-const rec = memory[cur.idx];
-let answered = rec.choose !== null;
+  // 不存在记录就初始化一条
+  if(!memory[cur.idx]){
+    memory[cur.idx] = {choose:null, rate:2, showAns:false};
+  }
+  const rec = memory[cur.idx];
+  let answered = rec.choose !== null;
 
-// 解析显示状态跟随本题
-ansWrap.classList.toggle("show", rec.showAns);
+  // 解析显示状态跟随本题
+  ansWrap.classList.toggle("show", rec.showAns);
 
-cur.opt.forEach((txt,oi)=>{
-const div = document.createElement("div");
-div.className = "opt";
-div.innerText = txt;
-if(answered){
-if(oi === cur.ans) div.classList.add("right");
-else if(oi === rec.choose) div.classList.add("wrong");
-div.classList.add("disabled");
-}
-div.onclick = ()=>{
-if(answered) return;
-rec.choose = oi;
-memory[cur.idx] = rec;
-updateStat();
-render();
-}
-optWrap.appendChild(div);
-})
+  cur.opt.forEach((txt,oi)=>{
+    const div = document.createElement("div");
+    div.className = "opt";
+    div.innerText = txt;
+    if(answered){
+      if(oi === cur.ans) div.classList.add("right");
+      else if(oi === rec.choose) div.classList.add("wrong");
+      div.classList.add("disabled");
+    }
+    div.onclick = ()=>{
+      if(answered) return;
+      rec.choose = oi;
+      memory[cur.idx] = rec;
+      updateStat();
+      render();
+    }
+    optWrap.appendChild(div);
+  })
 
-// 标记按钮高亮
-rateBtns.forEach(b=>{
-b.classList.remove("active");
-if(Number(b.dataset.rate) === rec.rate){
-b.classList.add("active");
-}
-})
+  // 标记按钮高亮
+  rateBtns.forEach(b=>{
+    b.classList.remove("active");
+    if(Number(b.dataset.rate) === rec.rate){
+      b.classList.add("active");
+    }
+  })
 }
 
 // 切换科目tab
 tabs.forEach(t=>{
-t.onclick = ()=>{
-tabs.forEach(x=>x.classList.remove("active"));
-t.classList.add("active");
-filterSubject = t.dataset.subject;
-wrongOnly = false;
-currentIdx = 0;
-makePool();
-render();
-}
+  t.onclick = ()=>{
+    tabs.forEach(x=>x.classList.remove("active"));
+    t.classList.add("active");
+    filterSubject = t.dataset.subject;
+    wrongOnly = false;
+    currentIdx = 0;
+    makePool();
+    render();
+  }
 })
 
 // 记忆评级按钮
 rateBtns.forEach(b=>{
-b.onclick = ()=>{
-if(renderPool.length===0) return;
-const cur = renderPool[currentIdx];
-const r = Number(b.dataset.rate);
-if(!memory[cur.idx]) memory[cur.idx] = {choose:null, rate:2, showAns:false};
-memory[cur.idx].rate = r;
-updateStat();
-render();
-}
+  b.onclick = ()=>{
+    if(renderPool.length===0) return;
+    const cur = renderPool[currentIdx];
+    const r = Number(b.dataset.rate);
+    if(!memory[cur.idx]) memory[cur.idx] = {choose:null, rate:2, showAns:false};
+    memory[cur.idx].rate = r;
+    updateStat();
+    render();
+  }
 })
 
 // 查看解析：只修改这一题自己的showAns
 showAnsBtn.onclick = ()=>{
-const cur = renderPool[currentIdx];
-memory[cur.idx].showAns = !memory[cur.idx].showAns;
-updateStat();
-render();
+  const cur = renderPool[currentIdx];
+  memory[cur.idx].showAns = !memory[cur.idx].showAns;
+  updateStat();
+  render();
 }
 
 // 只看错题
 wrongBtn.onclick = ()=>{
-wrongOnly = !wrongOnly;
-currentIdx = 0;
-makePool();
-render();
+  wrongOnly = !wrongOnly;
+  currentIdx = 0;
+  makePool();
+  render();
 }
 
 // 重置本套（当前筛选池里面所有题目清空状态）
 resetBtn.onclick = ()=>{
-if(confirm("确定清空当前这一套筛选内所有题目的作答记录？不可恢复！")){
-renderPool.forEach(x=>{
-memory[x.idx] = {choose:null, rate:2, showAns:false};
-})
-updateStat();
-makePool();
-render();
-}
+  if(confirm("确定清空当前这一套筛选内所有题目的作答记录？不可恢复！")){
+    renderPool.forEach(x=>{
+      memory[x.idx] = {choose:null, rate:2, showAns:false};
+    })
+    updateStat();
+    makePool();
+    render();
+  }
 }
 
 prevBtn.onclick = ()=>{
-if(currentIdx>0){currentIdx--;render();}
+  if(currentIdx>0){currentIdx--;render();}
 }
 nextBtn.onclick = ()=>{
-if(currentIdx < renderPool.length-1){currentIdx++;render();}
+  if(currentIdx < renderPool.length-1){currentIdx++;render();}
 }
 
 // 初始化
